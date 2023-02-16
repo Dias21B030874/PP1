@@ -1,0 +1,24 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    string s;
+    cin >> s;
+    string t = "", temp = "";
+    for(int i = 1; i < s.size(); i++){
+        t+=s[i];
+    }
+    reverse(s.begin(),s.end());
+    for(int i = 0; i < s.size()-1; i++){
+        temp+=s[i];
+    }
+    if(t == temp){
+        cout << "YES";
+    }
+    else{
+        cout << "NO";
+    }
+
+    return 0;
+}

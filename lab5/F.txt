@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string s;
+    cin >> s;
+    int l,r;
+    cin >> l >> r;
+    string temp;
+    for(int i = l; i <= r; i++){
+        temp+=s[i];
+    }
+    cout << temp;
+
+    return 0;
+}
