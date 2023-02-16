@@ -1,0 +1,31 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int main() {
+    int n,m;
+    cin >> n >> m;
+    int a[n][m],b[n]={};
+    for(int i = 0 ; i < n; i++){
+    for(int j = 0 ; j < m; j++){
+    cin >> a[i][j];
+    if(a[i][j]<0) 
+    b[i]++;
+    }}
+    int count = 0, max = 0, max1 = 0;
+    for(int i = 0; i < n; i++){
+    //cout << b[i] << " ";
+    if(b[i]==b[i-1])
+    count++;
+    }
+    //cout << endl;
+    if(count > 1)
+    cout << "Numbers are equal";
+    //cout << endl;
+    else{
+    for(int i = 0; i < n; i++){
+        if(b[i]<max)
+        max = b[i];
+        max1 = i;}
+        cout << max1;}
+    return 0;
+}

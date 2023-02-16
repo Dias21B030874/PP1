@@ -1,0 +1,604 @@
+A:#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt[MAXN][40], k, pr, l, r, y, a, b, ar[MAXN], _, ans, cnts[40];
+bool flag, was[MAXN];
+string s;
+
+
+int main(){
+    scanf("%lli", &_);
+    while(_--){
+        flag = false; ans = 0;
+        scanf("%lli", &n, &k, &m);
+        //fori(n) scanf("%lli", ar+i);
+        
+        queue<ll> q;
+        q.push(n);
+        for(ll i = n-1; i > 0; i--){
+            q.push(i);
+            forr(j, i){
+                ll num = q.front();
+                q.pop();
+                q.push(num);
+            }
+        }
+        vector<ll> ans;
+        fori(n){
+            ans.pb(q.front()); q.pop();
+        }
+        fori(n){
+            printf("%lli ", ans[n-i-1]);
+        }printf("\n");
+
+        //printf("%lli\n", ans);
+    }
+    return 0;
+}
+B:#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt[MAXN][40], k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, cnts[40];
+bool flag, was[MAXN];
+string s;
+
+
+int main(){
+    //scanf("%lli", &_);
+    while(_--){
+        flag = false; ans = 0;
+        scanf("%lli", &n, &k, &m);
+        fori(n) scanf("%lli", ar+i);
+        
+        stack<ll> st;
+
+        fori(n){
+            while(!st.empty() && st.top() > ar[i]) st.pop();
+            ans = (st.empty() ? -1 : st.top());
+            st.push(ar[i]);
+            printf("%lli ", ans);
+        }
+
+        //printf("%lli\n", ans);
+    }
+    return 0;
+}
+C:
+#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "Yes" : "No"))
+
+
+using namespace std;
+
+ll n, m, x, cnt[MAXN][40], k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, cnts[40];
+bool flag, was[MAXN];
+string s, t;
+
+string get(){
+    string s;
+    cin >> s;
+    stack<char> st;
+    for(char i : s){
+        if (i == '#'){
+            if (st.empty()) return "";
+            else st.pop();
+        }else st.push(i);
+    }
+    s = "";
+    while(!st.empty()){
+        s.pb(st.top()); st.pop();
+    }
+    return s;
+}
+
+int main(){
+    //scanf("%lli", &_);
+    while(_--){
+        flag = false; ans = 0;
+        //scanf("%lli", &n, &k, &m);
+        //fori(n) scanf("%lli", ar+i);
+        
+        YESNO(get() == get());
+
+        //printf("%lli\n", ans);
+    }
+    return 0;
+}
+D:
+#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt[MAXN][40], k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, cnts[40];
+bool flag, was[MAXN];
+string s, t;
+
+bool get(){
+    string s;
+    cin >> s;
+    stack<char> st;
+    for(char i : s){
+        if (st.empty() || st.top() != i) st.push(i);
+        else st.pop();
+    }
+    return st.empty();
+}
+
+int main(){
+    //scanf("%lli", &_);
+    while(_--){
+        flag = false; ans = 0;
+        //scanf("%lli", &n, &k, &m);
+        //fori(n) scanf("%lli", ar+i);
+        
+        YESNO(get());
+
+        //printf("%lli\n", ans);
+    }
+    return 0;
+}
+E:
+#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt[MAXN][40], k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, cnts[40];
+bool flag, was[MAXN];
+string s, t;
+
+void print_queue(queue<ll> q){
+    while(!q.empty()){
+        printf("%lli ", q.front());
+        q.pop();
+    }
+    printf("\n");
+}
+
+int main(){
+    //scanf("%lli", &_);
+    while(_--){
+        flag = false; ans = 0;
+        //scanf("%lli", &n, &k, &m);
+        //fori(n) scanf("%lli", ar+i);
+        
+        queue<ll> b, n;
+        fori(5) { scanf("%lli", &x); b.push(x); }
+        fori(5) { scanf("%lli", &x); n.push(x); }
+
+        while(!b.empty() && !n.empty() && ans < 1000000LL){
+            ans++;
+            ll bb = b.front(), nn = n.front(); b.pop(), n.pop();
+            if ((bb > nn || nn-bb == 9) && nn-bb != -9){
+                b.push(bb); b.push(nn);
+            }else{
+                n.push(bb); n.push(nn);
+            }
+            //print_queue(b); print_queue(n); printf("\n");
+        }
+        ans == 1000000LL ? printf("blin nichya") : printf("%s %lli", (n.empty() ? "Boris" : "Nursik"), ans);
+        //printf("%lli\n", ans);
+    }
+    return 0;
+}
+F:
+#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt, k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, sieve[MAXN];
+bool flag, was[MAXN];
+string s, t;
+
+
+
+int main(){
+    for(ll i = 2; i < MAXN; i++) sieve[i] = true;
+    fori(MAXN){
+        if (sieve[i]){
+            sieve[++cnt] = i;
+            for(ll j = i*i; j < MAXN; j += i) sieve[j] = false;
+        }
+    }
+    //scanf("%lli", &_);
+    while(_--){
+        flag = false; ans = 0;
+        scanf("%lli", &n, &k, &m);
+        //fori(n) scanf("%lli", ar+i);
+        ans = sieve[n];
+        printf("%lli\n", ans);
+    }
+    return 0;
+}
+G#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt, k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, sieve[MAXN];
+bool flag, was[MAXN];
+string s, t;
+
+
+
+int main(){
+    for(ll i = 2; i < MAXN; i++) sieve[i] = true;
+    fori(MAXN){
+        if (sieve[i]){
+            sieve[++cnt] = i;
+            for(ll j = i*i; j < MAXN; j += i) sieve[j] = false;
+        }
+    }
+    //scanf("%lli", &_);
+    while(_--){
+        flag = false; ans = 0;
+        scanf("%lli", &n, &k, &m);
+        //fori(n) scanf("%lli", ar+i);
+        ans = sieve[sieve[n]];
+        printf("%lli\n", ans);
+    }
+    return 0;
+}
+H:
+#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt, k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, sieve[MAXN];
+bool flag, was[MAXN];
+string s, t;
+
+
+
+int main(){
+    for(ll i = 2; i < MAXN; i++) sieve[i] = true;
+    fori(MAXN){
+        if (sieve[i]){
+            sieve[++cnt] = i;
+            for(ll j = i*i; j < MAXN; j += i) sieve[j] = false;
+        }
+    }
+    //scanf("%lli", &_);
+    while(_--){
+        flag = true; ans = 0;
+        scanf("%lli", &n, &k, &m);
+        //fori(n) scanf("%lli", ar+i);
+
+        fori1(cnt){
+            if (sieve[i] >= n) break;
+            if (n%sieve[i] == 0) flag = false;
+        }
+
+        YESNO(flag && n != 1);
+        //printf("%lli\n", ans);
+    }
+    return 0;
+}
+I:#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt, k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, sieve[MAXN];
+bool flag, was[MAXN];
+string s;
+char c;
+
+
+
+int main(){
+    //scanf("%lli", &_);
+    while(_--){
+        flag = true; ans = 0;
+        scanf("%lli", &n, &k, &m);
+        queue<char> t;
+        fori(n) {
+            cin >> c;
+            t.push(c);
+        }
+        //fori(n) scanf("%lli", ar+i);
+        ll s = 0, k = 0, ss = 0, kk = 0;
+        while(t.size() > 1){
+            queue<char> cur;
+            s = 0, k = 0, ss = 0, kk = 0;
+            while(!t.empty()){
+                char i = t.front(); t.pop();
+                if (i == 'K'){
+                    if (ss) ss--;
+                    else kk++, k++, cur.push(i);
+                }else{
+                    if (kk) kk--;
+                    else ss++, s++, cur.push(i);
+                }
+            }          
+            //cout << t << '\n';
+            while(!cur.empty()){
+                char i = cur.front(); cur.pop();
+                if (i == 'S' && kk) kk--;
+                else if (i == 'K' && ss) ss--;
+                else t.push(i);
+            }
+            if (!s || !k) break;
+            
+        }
+        printf("%s", (t.front() == 'S' ? "SAKAYANAGI" : "KATSURAGI"));
+
+        //printf("%lli\n", ans);
+    }
+    return 0;
+}
+J:#include <algorithm>
+#include <iostream>
+#include <cassert>
+#include <cstring>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <list>
+#include <map>
+#include <set>
+
+#define ll long long
+#define pll pair<ll,ll>
+#define ppll pair<ll,pll>
+#define fori(n) for (ll i = 0; i < n; i++)
+#define fori1(n) for (ll i = 1; i <= n; i++)
+#define forr(i, n) for (ll i = 0; i < n; i++)
+#define f first
+#define s second
+#define MAXN 200500LL
+#define MOD 998244353LL
+#define IOS ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
+#define pb push_back
+#define all(queries) (queries).begin(),(queries).end()
+#define YESNO(flag) printf("%s\n", (flag ? "YES" : "NO"))
+
+
+using namespace std;
+
+ll n, m, x, cnt, k, pr, l, r, y, a, b, ar[MAXN], _=1, ans, sieve[MAXN];
+bool flag, was[MAXN];
+string t;
+char c;
+
+
+
+int main(){
+    deque<ll> dc;
+    while(cin >> c && c != '!'){
+        if (c == '*'){
+            if (dc.size()){
+                printf("%lli\n", dc.front()+dc.back());
+                dc.pop_front();
+                if (dc.size()) dc.pop_back();
+            }else printf("error\n");
+        }else{
+            scanf("%lli", &x);
+            if (c == '+') dc.push_front(x);
+            else dc.push_back(x);
+        }
+        //for(ll i : dc) cout << i << ' '; printf("\n");
+    }
+    return 0;
+}
