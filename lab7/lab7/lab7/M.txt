@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+void pal(int n){
+    if(n>=1){
+    pal(n-1);
+    cout << n <<" ";
+}
+    
+}
+int main()
+{
+    int n;
+    cin >> n;
+    pal(n);
+
+    return 0;
+}

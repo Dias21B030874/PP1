@@ -1,0 +1,23 @@
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+int isvalid(int n){
+    int sum = 0;
+    while(n > 0){
+        sum += n%10;
+        n/=10;
+    }
+    return sum;
+    
+}
+int main()
+{
+    int n;
+    cin >> n ;
+    if(isvalid(n)%(n%10) == 0)
+    cout << "YES";
+    else
+    cout << "NO";
+}

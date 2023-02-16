@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+bool pal(string s){
+    string tmp;
+    tmp = s;
+    std::reverse(s.begin(), s.end());
+    if(tmp == s)
+    return true;
+    else
+    return false;
+}
+int main()
+{
+    string s;
+    cin >> s;
+    if(pal(s) == true)
+    cout << "Yes";
+    else
+    cout << "No";
+
+    return 0;
+}

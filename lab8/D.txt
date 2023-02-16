@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+using namespace std;
+int main() {
+	int n, a;
+	int l;
+	cin >> n;
+	vector<int> v;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		v.push_back(a);
+	}
+	cin >> l;
+	vector<int>::iterator it = v.begin();
+	v.erase(it + l);
+	for (int i = 0; i < n-1; i++) {
+		cout << v.at(i) << " ";
+	}
+	cout << endl;
+
+}

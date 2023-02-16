@@ -1,0 +1,15 @@
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int isvalid(int n, int m){
+    return 100*m/n;
+    
+}
+int main()
+{
+    int n,m;
+    cin >> n >> m;
+    cout << isvalid(n,m);
+    
+}

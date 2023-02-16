@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+bool isvalid(int n){
+    bool v = true;
+    while(n > 0){
+        if((n%10)%2!=0){
+        v = false;
+        break;}
+      n/=10;
+    }
+    if(v) return true;
+    else return false;
+    
+}
+int main()
+{
+    int n;
+    cin >> n;
+   
+    if(isvalid(n)) cout << "Valid";
+    else cout << "Not valid";
+}

@@ -1,0 +1,23 @@
+
+#include <iostream>
+using namespace std;
+void equals(int n, int a[] , int x){
+    bool found = false;
+    for(int i = 0; i < n; i++){
+        if(a[i] == x){
+            found = true;
+        }
+    }
+    if(found == true){cout << "YES";}
+    else{cout << "NO";}
+}
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++) cin >> a[i];
+    int x;
+    cin >> x;
+    equals(n,a,x);
+}

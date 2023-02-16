@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double power(long double a)
+{
+	long double pow1 = a;
+	if (a == 0)
+	{
+		pow1 = 1;
+	}
+	
+	else
+	{
+		for (int i = 1; i < a; i++) {
+			pow1 *= a;
+			if (a > 30) {
+				break;
+
+			}
+		}
+	}
+	return pow1;
+}
+int main()
+{
+	long double a;
+	cin >> a;
+	long double b = pow((long double)2, a);
+	printf(" %.0Lf", b);
+	return 0;
+}

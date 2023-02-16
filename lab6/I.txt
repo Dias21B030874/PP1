@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cctype> 
+using namespace std;
+void isvalid(string s){
+    for(int i = 0; i < s.size(); i++){
+        if(i % 2 == 0){
+            s[i] = (char)toupper(s[i]);
+        }
+        cout << s[i];
+        
+    }
+    
+}
+int main()
+{
+    string s;
+    cin >> s;
+    isvalid(s);
+}

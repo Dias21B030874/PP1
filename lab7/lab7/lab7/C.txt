@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cmath>
+#include<algorithm>
+int a[1000000];
+using namespace std;
+
+void bins(int n, int a[], int x) {
+	bool flag = false;
+		int l = 0;
+		int r = n-1;
+		int mid;
+		sort(a, a + n);
+
+	while ((l <= r) && (flag != true)) {
+		mid = (l + r) / 2; 
+		if (a[mid] == x) flag = true; 
+		if (a[mid] > x) r = mid - 1; 
+		else l = mid + 1;
+	}
+
+	if (flag) cout << "Yes";
+	else cout << "No";
+
+}
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) cin >> a[i];
+	int x;
+	cin >> x;
+	bins(n, a, x);
+	return 0;
+
+}

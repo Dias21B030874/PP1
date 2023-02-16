@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <cstring>
+using namespace std;
+
+long long digitSum(string digits)
+{
+    long long count = 0;
+    for (int i = 0; i < digits.length(); i++)
+    { 
+        auto charValue = digits.at(i) - '0';
+        if(charValue%2==0)
+        count++;
+    }
+    return count;
+}
+int main()
+{
+    string digits;
+    cin >> digits;
+    auto total = digitSum(digits);
+    cout << total << endl;
+}

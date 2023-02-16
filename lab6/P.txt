@@ -1,0 +1,15 @@
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+int isvalid(int n){
+    return abs(n);
+    
+}
+int main()
+{
+    int n;
+    cin >> n ;
+    cout << isvalid(n);
+    
+}

@@ -1,0 +1,10 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+int main()
+{
+    char s;
+    cin >> s;
+    cout << (char)toupper(s);
+}
