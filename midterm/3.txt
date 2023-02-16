@@ -1,0 +1,27 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    int bin=0;
+    for(int j=0; n>0; j++)
+    {
+        bin+=(n%2)*pow(10.0,j);
+        n/=2;
+    }
+    //cout << bin << endl;
+    int t = bin, dig, rev = 0;
+     while(bin > 0){
+    dig = bin % 10;
+    rev = rev * 10 + dig;
+    bin = bin / 10;
+}
+    if (t == rev)
+        cout << "It works!";
+    else
+        cout << "Sad";
+ 
+    return 0;
+}

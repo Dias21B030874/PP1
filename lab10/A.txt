@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    int n; cin >> n;
+    vector<string> s;
+    vector<int> v;
+    string h;
+        int l;
+    for(int i = 0; i < n; i++){
+        cin >> h >> l;
+        s.push_back(h);
+        v.push_back(l);
+    }
+    sort(s.begin(), s.end());
+    sort(v.begin(), v.end());
+    //vector<pair<string, int>> vp;
+    //vp.push_back(make_pair(s,v));
+    for(int i = 0; i < n; i++){
+        cout << s.at(i) <<" " << v.at(i)<<endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,28 @@
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+using namespace std;
+int main()
+{
+    queue<string> q;
+    int n; cin >> n;
+    for(int i = 0; i < n; i++){
+        int num;
+        cin >> num;
+        if(num == 1){
+            string s;
+            cin >> s;
+            q.push(s);
+        }
+        else if(num == 2){
+            q.pop();
+        }
+        if(q.size() == 0){
+            cout << "queue is empty" << endl;
+        }else{
+        cout << q.front()<<endl;}
+    }
+    return 0;
+}

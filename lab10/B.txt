@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+int x = 0;
+string npower(){
+	long long k = pow(x,x);
+	x++;
+	string num_str = std::to_string(k);
+	return num_str;
+}
+int main(){
+	int n;
+	cin>>n;
+	vector<string> v(n+1);
+	generate(v.begin(),v.end(),npower);
+	for(int i = 0; i < v.size(); i++){
+		cout<<v.at(i)<<" ";
+	}
+}

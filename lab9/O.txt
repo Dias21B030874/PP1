@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <map>
+using namespace std;
+int main()
+{
+    map<string,string> m;
+    int n;
+    cin >> n;
+    for(int i = 0 ; i < n; i++){
+        string l,p;
+        cin >> l >> p;
+        m[l] = p;
+    }
+    int t;
+    cin >> t;
+    for(int i = 0 ; i < t; i++){
+        bool cl = false, cp = false;
+        string l1,p1;
+        cin >> l1 >> p1;
+        for(auto i : m){
+            if(i.first == l1){
+                cl = true;
+                if(i.second == p1){
+                    cp = true;
+                }
+            }
+        }
+        if(cl){
+        if(cp){
+            cout << "correct password\n";
+            
+        }
+        else{
+            cout << "password error\n";
+        }}
+        else{
+                cout << "login error\n";
+        }
+    }
+    return 0;
+}
+          

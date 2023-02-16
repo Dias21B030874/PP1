@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+double GetPriceQualityRatio(int price, int quality) {
+    return (1.0 * quality ) / (1.0 * price);
+}
+int main() {
+    int n; 
+    cin >> n;
+
+
+    string phones[n];
+    double maxPriceQualityRatio = 0;
+    int maxPriceQualityRatioIndex = 0;
+
+    for(int i = 0; i < n; i++) {
+        string s; 
+        cin >> s;
+        phones[i] = s;
+        int price, quality; 
+        cin >> price >> quality;
+        
+        if(maxPriceQualityRatio < GetPriceQualityRatio(price, quality)) {
+            maxPriceQualityRatio = GetPriceQualityRatio(price, quality);
+            maxPriceQualityRatioIndex = i;
+        }
+
+    }
+
+    cout << phones[maxPriceQualityRatioIndex];
+    return 0;
+}
