@@ -1,0 +1,23 @@
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+ 
+int main(int nNumberofArgs, char* pszArgs[])
+{
+int i,j, p=0;
+int n,m;
+cin >> n >> m;
+int mas[n][m];
+
+for (i=0; i<n; i++)
+for (j=0; j<m; j++) 
+scanf ("%i", &mas[i][j]);
+ 
+for (i=0; i<n; i++)
+for (j=0; j<m; j++)
+if (mas[i][j]<0) p=p+1;
+ 
+cout<<p<<endl;
+
+return 0;
+}

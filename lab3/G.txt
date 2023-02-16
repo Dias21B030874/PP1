@@ -1,0 +1,40 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++)
+    cin >> a[i];
+    int temp = 0, indexMin = 0, indexMax = 0;
+    int min = a[ indexMin ], max = a[ indexMax ];
+for (int i = 0; i < n; ++i){
+    
+        if ( a[ i ] < min ) {
+            min = a[ i ];
+            indexMin = i;
+        }
+ 
+        if ( a[ i ] > max ) {
+            max = a[ i ];
+            indexMax = i;
+        }
+}
+   a[ indexMax ] = min;
+      for(int i = 0; i < n; i++)
+     
+       cout << a[i] << " ";
+    
+    return 0;
+}

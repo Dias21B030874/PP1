@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int main(){
+int N;
+cin >> N;
+
+bool n[N];
+
+for (int i=2;i<=N;i++) {
+     n[i] = true;
+}
+
+for (int i=2;i<=N;i++) {
+     if (n[i] == true) {
+         for (int j=i*i;j<=N;j+=i)
+             n[j] = false;
+    }
+}
+
+for (int i=2;i<=N;i++) {
+  if (n[i] == true)
+      cout << i << " is prime" << endl;
+}}

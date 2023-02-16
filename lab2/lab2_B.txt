@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+     int n;
+     cin >> n;
+     if(n == 0){
+     cout << "None";}
+     if(n%2!=0){
+     cout << "Super";}
+     if(n%2 == 0 and (n>2 and n<5)){
+     cout << "Not Super";}
+      if(n%2 == 0 and n>20 ){
+     cout << "Not Super";}
+     if(n%2 == 0 and (n>6 and n<=20)){
+     cout << "Super";}
+
+    return 0;
+}

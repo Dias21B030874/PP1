@@ -1,0 +1,18 @@
+#include <iostream>
+void drawOneLine(int nspaces, int nstars, int nspaces1){
+    int i;      
+    for(i=0; i < nspaces; i++)
+        putchar('.');
+    for(i=0; i < nstars; i++)
+        putchar('*');
+    for(i=0; i < nspaces1; i++)
+        putchar('.');
+    putchar('\n');
+}
+int main(){
+    int n;
+    std::cin >> n;
+    int i;      
+    for(i=1; i <= n; i++)
+        drawOneLine(n - i, i*2 - 1, n-i);
+}

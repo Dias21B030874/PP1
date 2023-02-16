@@ -1,0 +1,44 @@
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+
+{
+    int n,m;
+    cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++) cin >> a[i];
+    cin >>m;
+    int b[m];
+    for(int i = 0; i < m; i++) cin >> b[i];
+    int k=0;
+    int C[n+m];
+    for(int i=0; i<n ;i++)
+    C[k++]=a[i];
+    for(int i=0;i<m;i++)
+    C[k++]=b[i];
+    int j = 0;
+  int tmp = 0;
+  for(int i=0; i<n+m; i++){
+    j = i;
+    for(int k = i; k<n+m; k++){
+      if(C[j]>C[k]){
+        j = k;
+      }
+    }
+    tmp = C[i];
+    C[i] = C[j];
+    C[j] = tmp;
+  }
+
+     for (int i = 0; i < m+n; i++) {
+        cout << C[i] << " ";
+    }
+    return 0; 
+    
+  
+ 
+}

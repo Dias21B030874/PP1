@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n, k;
+    cin >> n >> k;
+    if(n < k)
+        cout << 2;
+    else
+        cout << ceil((n * 1.0/k) * 2.);
+    return 0;
+}

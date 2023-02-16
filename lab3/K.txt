@@ -1,0 +1,26 @@
+#include <iostream> 
+#include <algorithm>
+#include <ctime> 
+#include <vector>
+#include <cstdlib>
+
+using namespace std;
+
+
+int main()
+{
+ int n,m;
+    cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++) cin >> a[i];
+ vector<int> vec (a, a+n); 
+    vector<int> :: iterator it; 
+    sort(vec.begin(), vec.end()); 
+    it = unique(vec.begin(), vec.end()); 
+    vec.resize(it - vec.begin());
+    
+ 
+    for (int i = 0; i < vec.size(); i++) 
+        cout << vec[i] << " ";  
+    cout << endl;
+}
