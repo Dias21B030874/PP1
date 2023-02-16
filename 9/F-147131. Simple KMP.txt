@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int n, m;
+int p[200001];
+string text, word;
+vector<int> v;
+
+void pref_func() {
+  for(int i = 1; i < n; i++) {
+    int j = p[i - 1];
+    while(j > 0 && text[i] != text[j]) j = p[j - 1];
+    if(text[i] == text[j]) ++j;
+    p[i] = j;
+  }
+}
+
+int main() {
+
+  cin >> text >> word;
+  text = word + "#" + text;
+  n = text.length();
+  m = word.length();
+  pref_func();
+  for(int i = 0; i < n; i++) {
+    if(p[i] == m) v.push_back(i - 2 * m + 1);
+  }
+  cout << v.size() << "\n";
+  for(int i : v) cout << i << " ";
+  return 0;
+}

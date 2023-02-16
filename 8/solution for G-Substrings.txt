@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <unordered_set>
+#include <string>
+using namespace std;
+
+const int N = 2000;
+const int p = 31;
+long long p_pow[N], nums[N];
+string s;
+unordered_set<long long> st;
+long long hs[N];
+char c;
+int q, l, r, cnt;
+long long t, curh;
+
+/*long long my_hash(string s) {
+ for(int i = 0; i < n; i++) {
+    hs[i] = (s[i] - 'a' + 1) * p_pow[i];
+    if(i) hs[i] += hs[i - 1];
+    return hs[i];
+  }
+}*/
+
+
+int main() {
+	p_pow[0] = 1;
+	cin >> s;
+	int n = s.size();
+	for (int i = 1; i < N; i++)
+		p_pow[i] = p_pow[i-1] * p;
+	for(int i = 0; i < n; i++) {
+        hs[i] = (s[i] - 'a' + 1) * p_pow[i];
+        if(i) hs[i] += hs[i - 1];
+    }
+	cin >> q;
+    while(q--) {
+    cnt = 0;
+    cin >> l >> r;
+    --l;
+    --r;
+    curh = hs[r];
+    if(l > 0) curh -= hs[l - 1];
+    for(int i = 0; i + r - l < n; i++) {
+      if(i) {
+        if(i > l) cnt += curh * p_pow[i - l] == hs[i + r - l] - hs[i - 1];
+        else cnt += curh == (hs[i + r - l] - hs[i - 1]) * p_pow[l - i];
+      }else {
+        if(i > l) cnt += curh * p_pow[i - l] == hs[i + r - l];
+        else cnt += curh == hs[i + r - l] * p_pow[l - i];
+      }
+    }
+    cout << cnt << "\n";
+  }
+
+	return 0;
+}

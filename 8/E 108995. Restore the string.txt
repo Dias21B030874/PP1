@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <unordered_set>
+#include <string>
+using namespace std;
+
+const int N = 2000;
+const int p = 31;
+long long p_pow[N], nums[N];
+string s;
+unordered_set<long long> st;
+long long hs;
+char c;
+int n;
+
+long long my_hash(string s) {
+    
+for(int i = 0; i < n; i++) {
+    hs = nums[i];
+    if(i) hs -= nums[i - 1];
+    hs /= p_pow[i];
+    c = 'a' + hs;
+    cout << c;
+  }
+}
+
+
+int main() {
+	p_pow[0] = 1;
+	cin >> n;
+    for(int i = 0; i < n; i++) cin >> nums[i];
+	for (int i = 1; i < N; i++)
+		p_pow[i] = p_pow[i-1] * 2;
+	my_hash(s);
+
+	return 0;
+}

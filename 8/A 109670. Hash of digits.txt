@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <map>
+using namespace std;
+
+const int mod = 1e9 + 7, N = 1e4;
+int n, cnt;
+long long _hash, eleven;
+string s, hs;
+string words[2 * N];
+map<string, string> m, pre;
+map<string, string>::iterator it;
+
+int main() {
+  cin >> n;
+  for(int word = 0; word < 2 * n; word++) {
+    _hash = 0, eleven = 1;
+    cin >> s;
+    words[word] = s;
+    for(int i = 0; i < s.size(); i++) {
+      _hash = (_hash + (s[i] - 47) * eleven % mod) % mod;
+      eleven = (eleven * 11) % mod;
+    }
+    hs = to_string(_hash);
+    pre[hs] = s;
+  }
+  for(int i = 0; i < 2 * n; i++) {
+    if(pre.find(words[i]) != pre.end()) m[pre[words[i]]] = words[i];
+  }
+  for(int i = 0; i < 2 * n; i++) {
+    if(m.find(words[i]) != m.end()) {
+      cout << "Hash of string " << "\"" << words[i] << "\" is " << m[words[i]] << "\n";
+      ++cnt;
+    }
+    if(cnt == n) break;
+  }
+  return 0;
+}

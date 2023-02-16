@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+int n, m, sum;
+int a[501][501], c[501][501];
+
+bool alpha_order(int a[], int b[]) {
+  for(int i = 1; i <= m; i++) {
+    if(a[i] < b[i]) return true;
+    else if(a[i] > b[i]) return false;
+  }
+  return false;
+}
+
+void swapping(int c[], int a[]) {
+  for(int i = 0; i <= m; i++) c[i] = a[i];
+}
+
+void merge(int low, int high, int mid) {
+  int i = low, k = low, j = mid + 1;
+  while(i <= mid && j <= high) {
+    if(a[i][0] > a[j][0] || (a[i][0] == a[j][0] && alpha_order(a[i], a[j]))) swapping(c[k++], a[i++]);
+    else swapping(c[k++], a[j++]);
+  }
+  while(i <= mid) swapping(c[k++], a[i++]);
+  while(j <= high) swapping(c[k++], a[j++]);
+  for(i = low; i < k; i++) swapping(a[i], c[i]);
+}
+
+void merge_sort(int low, int high) {
+  int mid;
+  if(low < high) {
+    mid = (low + high) / 2;
+    merge_sort(low, mid);
+    merge_sort(mid + 1, high);
+    merge(low, high, mid);
+  }
+}
+
+int main() {
+  cin >> n >> m;
+  for(int i = 1; i <= n; i++) {
+    sum = 0;
+    for(int j = 1; j <= m; j++) {
+      cin >> a[i][j];
+      sum += a[i][j];
+    }
+    a[i][0] = sum;
+  }
+  merge_sort(1, n);
+  for(int i = 1; i <= n; i++) {
+    for(int j = 1; j <= m; j++) cout << a[i][j] << " ";
+    cout << "\n";
+  }
+  return 0;
+}

@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int n;
+int p[1000001];
+string text;
+
+void pref_func() {
+  for(int i = 1; i < n; i++) {
+    int j = p[i - 1];
+    while(j > 0 && text[i] != text[j]) j = p[j - 1];
+    if(text[i] == text[j]) ++j;
+    p[i] = j;
+  }
+}
+
+int main() {
+  cin >> text;
+  n = text.size();
+  pref_func();
+  cout << n - p[n - 1];
+  return 0;
+} 

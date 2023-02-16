@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+int q, n, maxx;
+int p[100001];
+string s, word, text;
+unordered_map<int, vector<string>> umap;
+
+void pref_func() {
+  for(int i = 1; i < n; i++) {
+    int j = p[i - 1];
+    while(j > 0 && text[i] != text[j]) j = p[j - 1];
+    if(text[i] == text[j]) ++j;
+    p[i] = j;
+  }
+}
+
+int main() {
+  cin >> s;
+  s[0] = s[0] - 'A' + 'a';
+  cin >> q;
+  for(int _ = 0; _ < q; _++) {
+    cin >> word;
+    word[0] = word[0] - 'A' + 'a';
+    text = word + "#" + s;
+    n = text.size();
+    pref_func();
+    if(p[n - 1]) {
+      word[0] = word[0] - 'a' + 'A';
+      maxx = max(maxx, p[n - 1]);
+      umap[p[n - 1]].push_back(word);
+    }
+  }
+  cout << umap[maxx].size() << "\n";
+  for(string i : umap[maxx]) cout << i << "\n";
+  return 0;
+}

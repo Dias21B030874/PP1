@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+const int N = 100000, p = 31;
+int n, maxx, cnt;
+long long curh, t;
+long long p_pow[N], hs[N];
+string s, patt;
+string pattern[150];
+vector<pair<string, int>> v;
+
+int main() {
+  p_pow[0] = 1;
+  for(int i = 1; i < N; i++) p_pow[i] = p_pow[i - 1] * p;
+  cin >> n;
+  while(n) {
+    maxx = 0;
+    v.clear();
+    for(int i = 0; i < n; i++) cin >> pattern[i];
+    cin >> s;
+    for(int i = 0; i < s.size(); i++) {
+      hs[i] = (s[i] - 'a' + 1) * p_pow[i];
+      if(i) hs[i] += hs[i - 1];
+    }
+    for(int pt = 0; pt < n; pt++) {
+      t = cnt = 0;
+      patt = pattern[pt];
+      for(int i = 0; i < patt.size(); i++) t += (patt[i] - 'a' + 1) * p_pow[i];
+      for(int i = 0; i + patt.size() - 1 < s.size(); i++) {
+        curh = hs[i + patt.size() - 1];
+        if(i) curh -= hs[i - 1];
+        if(curh == t * p_pow[i]) ++cnt;
+      }
+      v.push_back(make_pair(patt, cnt));
+    }
+    for(int i = 0; i < n; i++) maxx = max(maxx, v[i].second);
+    cout << maxx << "\n";
+    for(int i = 0; i < n; i++) {
+      if(v[i].second == maxx) cout << v[i].first << "\n";
+    }
+    cin >> n;
+  }
+  return 0;
+}

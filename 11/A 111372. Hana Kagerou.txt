@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+int v,e;
+int l,r,c;
+vector<pair<int, pair<int, int>>> graph;
+int fst[1000000],snd[1000000], thd[1000000];
+void color(vector<bool> &used, int l, int r){
+    for(int i = l; i <= r; i++)used[i] = 1;
+}
+int search(int i){
+    if(i == fst[i])return i;
+    return fst[i] = search(fst[i]);
+}
+bool mst(int i, int j){
+    int a = search(i), b = search(j);
+    if(a == b)return false;
+    fst[a] = b;
+    snd[b] = min(snd[a], snd[b]);
+    thd[b] = max(thd[a], thd[b]);
+    return 1;
+}
+int main(){
+    cin >> v >> e; 
+    vector<bool> used(v, false);
+    while(e--){
+        cin >> l >> r >> c;
+        l--;r--;
+        graph.push_back({c, {l, r}});
+    }
+    for(int i = 0; i < v; i++){
+        fst[i] = i;
+        snd[i] = i;
+        thd[i] = i;
+    }
+    sort(graph.begin(), graph.end());
+    long long cnn = 0;
+    int cnt = 0, p = -1;
+    for(int i = 0; i < graph.size(); i++){
+        if(cnt > v-1)break;
+        int l = graph[i].second.first, r = graph[i].second.second, c = graph[i].first;
+        p = l;
+        for(int j = l; j <= r; j++){
+            if(j != search(j)){
+                p = search(j);
+                break;
+            }
+        }
+        if(snd[p] <= l and r <= thd[p])continue;
+        else if(snd[p] <= r and r <= thd[p])r = snd[p];
+        else if(snd[p] <= l and l <= thd[p])l = thd[p];
+        for(int j = l; j <= r; j++){
+            if(mst(p, j)){
+                cnt++;
+                cnn += c;
+            }
+        }
+    }
+    cout << cnn;
+     return 0;
+}

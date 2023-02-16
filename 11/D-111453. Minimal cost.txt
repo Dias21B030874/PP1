@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    
+    int n, ans = 0; 
+    cin >> n;
+    vector <int> max(n, 1e9), min(n, -1);
+    vector <vector <int> > graph(n);
+    vector <bool> check(n);
+    for(int i = 0; i < n; i++){
+        graph[i].resize(n);
+    }
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            cin >> graph[i][j];
+        }
+    }
+    max[0] = 0;
+    for(int i = 0; i < n; i++){
+        int a = -1;
+        for(int j = 0; j < n; j++){
+            if(!check[j] && (a == -1 || max[j] < max[a])){
+                a = j;
+            }
+        }
+        check[a] = true;
+        if(min[a] != -1){
+            ans =ans+graph[a][min[a]];
+        }
+        for(int j = 0; j < n; j++){
+            if(graph[a][j] < max[j]){
+                max[j] = graph[a][j];
+                min[j] = a;
+            }
+        }
+    }
+    cout << ans;
+    return 0;
+}

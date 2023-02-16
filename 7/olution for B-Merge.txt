@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int n, m;
+const int N = (int)1e5 + 5;
+int a[N], b[N], c[N], tmp[N];
+
+void merge(int *a, int n, int *b, int m, int *c) {
+    int l = 1; 
+    int r = 1; 
+    int k = 0; 
+    while (l <= n || r <= m) { 
+        if (l <= n && r <= m) {
+            if (a[l] <= b[r])
+                tmp[++k] = a[l], l++;
+            else
+                tmp[++k] = b[r], r++;
+            
+        } else if (l > n) {
+            tmp[++k] = b[r], r++;
+        } else { 
+            tmp[++k] = a[l], l++;
+        }
+    }
+
+    for (int i = 1; i <= k; i++)
+        c[i] = tmp[i];
+}
+
+/*void merge_sort(int *a, int n) {
+    if (n == 1) return;
+    int m = (n + 1) / 2;
+
+    merge_sort(a, m);
+
+    merge_sort(a + m, n - m);
+
+    merge(a, m, a + m, n - m, a);
+}
+*/
+int main() {
+    cin >> n;
+    //int k = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    cin >> m;
+    for (int i = 0; i < m; i++) {
+        cin >> b[i];
+    }
+   /* for(int i=0; i<n+m; i++){
+        if (i<n)
+            c[i]=a[i];
+        else
+            c[i] = b[i-n];
+    }*/
+    merge(a, (a + n), b, (b + m), c);
+    //merge_sort(c, n + m);
+    for (int i = 0; i < n + m; i++){
+        cout << c[i] << " ";
+    }
+    return 0;
+}

@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int n, q;
+int zando[1001][1001];
+
+int main(){
+    
+  cin >> n >> q;
+    bool flask[q];
+  for (int i =1; i<=n; i++){ 
+    for (int j = 1; j <=n; j++){ 
+      cin >> zando[i][j];
+        }
+    }
+  for (int i = 0; i < q; i++){
+    int chemical1, chemical2, chemical3;
+    cin >> chemical1 >> chemical2 >> chemical3;
+    if (zando[chemical1][chemical2] && zando[chemical1][chemical3] && zando[chemical2][chemical3]){
+      flask[i] =1;
+        }
+    else{
+      flask[i]=0;
+        }
+  }
+    for(int z = 0; z< q; z++){
+        if(flask[z]){
+            cout<<"YES" << endl;
+        }
+        else{
+            cout<< "NO" << endl;
+        }
+    }
+  return 0;
+}

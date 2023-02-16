@@ -1,0 +1,75 @@
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int n, m, credit;
+double sum_cred, sum_grade;
+string name, surname, grade;
+map<string, double> info{{"A+", 4.00}, {"A", 3.75}, {"B+", 3.50}, {"B", 3.00}, {"C+", 2.50}, {"C", 2.00}, {"D+", 1.50}, {"D", 1.00}, {"F", 0.00}};
+
+struct Student {
+  string name, surname;
+  double gpa;
+};
+
+Student st;
+Student a[100001], tmp[100001];
+
+bool isbetter(Student st1, Student st2) {
+  if(st1.gpa > st2.gpa) return true;
+  else if(st1.gpa == st2.gpa) {
+    if(st1.name > st2.name) return true;
+    else if(st1.name == st2.name) return st1.surname > st2.surname;
+    return false;
+  }
+  return false;
+}
+
+void merge(Student *a, int n, Student *b, int m, Student *c) {
+    int l = 1; 
+    int r = 1; 
+    int k = 0; 
+    while (l <= n || r <= m) { 
+        if (l <= n && r <= m) {
+            if (!isbetter(a[l] , b[r]))
+                tmp[++k] = a[l], l++;
+            else
+                tmp[++k] = b[r], r++;
+            
+        } else if (l > n) {
+            tmp[++k] = b[r], r++;
+        } else { 
+            tmp[++k] = a[l], l++;
+        }
+    }
+    for (int i = 1; i <= k; i++)
+        c[i] = tmp[i];
+}
+
+void merge_sort(Student *a, int n) {
+    if (n == 1) return;
+    int t = (n + 1) / 2; 
+    merge_sort(a, t);
+    merge_sort(a + t, n - t);
+    merge(a, t, a + t, n - t, a);
+}
+
+int main() {
+  cin >> n;
+  for(int i = 1; i <= n; i++) {
+    sum_cred = sum_grade = 0;
+    cin >> name >> surname >> m;
+    st.name = name;
+    st.surname = surname;
+    for(int j = 0; j < m; j++) {
+      cin >> grade >> credit;
+      sum_cred += credit;
+      sum_grade += credit * info[grade];
+    }
+    st.gpa = sum_grade / sum_cred;
+    a[i] = st;
+  }
+  merge_sort(a, n);
+  for(int i = 1; i <= n; i++) cout << a[i].name << " " << a[i].surname << " " << fixed << setprecision(3) << a[i].gpa << "\n";
+  return 0;
+}

@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cassert>
+#include <algorithm>
+#include <vector>
+#include <unordered_set>
+#include <string>
+using namespace std;
+
+const int p = 31, N = 1000000;
+int cnt;
+long long ht, curh1, curh2;
+long long p_pow[N], hs[N], hs1[N], hs2[N];
+string s1, s2, t;
+
+/*long long my_hash(string s) {
+ for(int i = 0; i < s.size(); i++) {
+    hs[i] = (s[i] - 'a' + 1) * p_pow[i];
+    if(i) hs[i] += hs[i - 1];
+    return hs[i];
+  }
+}*/
+
+
+int main() {
+	p_pow[0] = 1;
+	for (int i = 1; i < N; i++)
+		p_pow[i] = p_pow[i-1] * p;
+	cin >> s1 >> s2 >> t;
+    for(int i = 0; i < s1.size(); i++) {
+        hs1[i] =  hs1[i] = (s1[i] - 'a' + 1) * p_pow[i];
+        if(i) hs1[i] += hs1[i - 1];
+    }
+    for(int i = 0; i < s2.size(); i++) {
+        hs2[i] = hs2[i] = (s2[i] - 'a' + 1) * p_pow[i];
+        if(i) hs2[i] += hs2[i - 1];
+    }
+    for(int i = 0; i < t.size(); i++) ht += (t[i] - 'a' + 1) * p_pow[i];
+    for(int i = 0; i + t.size() - 1 < min(s1.size(), s2.size()); i++) {
+        curh1 = hs1[i + t.size() - 1];
+        curh2 = hs2[i + t.size() - 1];
+        if(i) {
+            curh1 -= hs1[i - 1];
+            curh2 -= hs2[i - 1];
+        }
+        if(curh1 == curh2 && curh1 == ht * p_pow[i]) ++cnt;
+    }
+    cout << cnt;
+
+	return 0;
+}

@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int t, k, n;
+int p[1000001];
+string text;
+
+void pref_func() {
+  for(int i = 1; i < n; i++) {
+    int j = p[i - 1];
+    while(j > 0 && text[i] != text[j]) j = p[j - 1];
+    if(text[i] == text[j]) ++j;
+    p[i] = j;
+  }
+}
+
+int main() {
+  cin >> t;
+  for(int _ = 0; _ < t; _++) {
+    cin >> text >> k;
+    n = text.size();
+    pref_func();
+    cout << (text.size() - p[n - 1]) * (k - 1) + text.size() << "\n";
+  }
+  return 0;
+}

@@ -1,0 +1,25 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+void primeFactors(int n){
+    set<int> s;
+    int c=2;
+    while(n>1)
+    {
+        if(n%c==0){
+            s.insert(c);
+            n/=c;
+        }
+        else c++;
+    }
+    cout << s.size() << endl;
+}
+
+int main() {
+    long long n;
+    cin >> n;
+    primeFactors(n);
+
+    return 0;
+}

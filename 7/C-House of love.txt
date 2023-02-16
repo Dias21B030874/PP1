@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+void merge(int arr[], int const l, int const m,int const r)
+{
+  int const subarr1 = m- l + 1,subarr2 = r - m;
+  auto *larr = new int[subarr1],
+    *rarr = new int[subarr2];
+  for (int i = 0; i < subarr1; i++)
+    larr[i] = arr[l+ i];
+  for (int j = 0; j < subarr2; j++)
+    rarr[j] = arr[m + 1 + j];
+  int idsubarr1= 0, idsubarr2= 0,idmerged= l; 
+  while (idsubarr1 <subarr1 and idsubarr2< subarr2) 
+    {
+    if (larr[idsubarr1]<= rarr[idsubarr2]) 
+        {
+      arr[idmerged]= larr[idsubarr1];
+      idsubarr1++;
+    }
+    else {
+      arr[idmerged]= rarr[idsubarr2];
+      idsubarr2++;
+    }
+    idmerged++;
+  }
+  
+  while (idsubarr1< subarr1) {
+    arr[idmerged]= larr[idsubarr1];
+    idsubarr1++;
+    idmerged++;
+  }
+  
+  while (idsubarr2 < subarr2) {
+    arr[idmerged]= rarr[idsubarr2];
+    idsubarr2++;
+    idmerged++;
+  }
+  delete[] larr;
+  delete[] rarr;
+}
+
+void mergeSort(int arr[], int const l, int const r)
+{
+  if (l>=r)
+    return; // Returns recursively
+  auto m=(l+r) / 2;
+  mergeSort(arr, l, m);
+  mergeSort(arr, m+ 1, r);
+  merge(arr,l, m, r);
+}
+int main()
+{
+    int n,m;cin>>n>>m;
+    int a[n],b[m];
+    for(int i=0;i<n;i++)
+        cin>>a[i];
+    for(int i=0;i<m;i++)
+        cin>>b[i];
+    mergeSort(a, 0,n- 1);
+    mergeSort(b, 0,m- 1);
+  int i = 0, j = 0, flag, x, k = 0,result[n+m];
+  while (i <n and j < m) 
+    {
+    if (a[i] < b[j]) 
+      i++;
+    else if (a[i] > b[j]) 
+      j++;
+    else 
+        {
+      flag = 0;
+      if (flag == 0) 
+            {
+        cout<<a[i]<<" ";
+        result[k] = a[i];
+        k++;
+      }
+      i++;
+      j++;
+    }
+  }
+}

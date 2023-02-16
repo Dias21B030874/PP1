@@ -1,0 +1,90 @@
+/*#include <iostream>
+using namespace std;
+
+struct TreeNode {
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ };
+    
+TreeNode *insert(TreeNode *tree, int val) {
+  if(!tree) {
+    tree = new TreeNode(val);
+    return tree;
+  }
+  if(val <= tree->val) tree->left = insert(tree->left, val);
+  else tree->right = insert(tree->right, val);
+  return tree;
+}
+int findHeight(TreeNode * height) {
+    if (height == NULL) {
+        return -1;
+    }
+
+    int lefth = findHeight(height->left);
+    int righth = findHeight(height->right);
+
+    if (lefth > righth) {
+        return lefth + 1;
+    } else {
+        return righth + 1;
+    }
+}
+    
+TreeNode *root;
+int main()
+{
+    cin.tie(0);
+    cout.tie(0);
+    int k;
+    root = insert(root, k);
+    while(cin >> k){
+        if(k==0) break;
+        insert(root, k);
+    }
+    cout << findHeight(root);
+    return 0;
+}*/
+#include <iostream>
+using namespace std;
+
+struct TreeNode {
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ };
+
+TreeNode *insert(TreeNode *tree, int val) {
+  if(!tree) {
+    tree = new TreeNode(val);
+    return tree;
+  }
+  if(val <= tree->val) tree->left = insert(tree->left, val); 
+  else tree->right = insert(tree->right, val); 
+  return tree;
+}
+int size(TreeNode * root){
+    if(root==NULL) return 0;
+    else return size(root->left) + size(root->right) + 1;
+}
+    
+TreeNode *root;
+int main()
+{
+    cin.tie(0);
+    cout.tie(0);
+    int k;
+    //root = insert(root, k);
+    while(cin >> k){
+        if(k==0) break;
+        root = insert(root, k);
+    }
+    cout << size(root);
+    return 0;
+}
