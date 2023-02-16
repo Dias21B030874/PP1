@@ -1,0 +1,19 @@
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+import java.lang.Iterable;
+import java.util.LinkedList;
+
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		LinkedList<Integer> ll = new LinkedList<Integer>();
+		int n = input.nextInt();
+		for(int i = 0; i < n; i++){
+		        ll.add(input.nextInt());
+	    }
+	    for(int i = 0; i < ll.size(); i+=2)
+	        System.out.print(ll.get(i) + " ");
+    }
+}

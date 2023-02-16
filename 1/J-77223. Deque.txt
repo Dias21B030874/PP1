@@ -1,0 +1,71 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+   
+  
+/*import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+import java.lang.Iterable;
+
+public class Main 
+{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int x, ans = 0;
+        String a[] = new String[];
+        Deque<Integer> d = new LinkedList<>();
+        while(true){
+            
+            if(a == "*"){
+                if (d.size()!=0){
+                    System.out.println(d.peekFirst() + d.peekLast());
+                    d.removeFirst();
+                    if (d.size()!=0) d.removeLast();
+                }
+                else System.out.println("error\n");
+            }
+            else{
+                x = input.nextInt();
+                if (a == "+") d.offerFirst(x);
+                else if(a == "-") d.offerLast(x);
+                else break;
+            }
+            
+            }
+        }
+}*/
+
+#include <algorithm>
+#include <iostream>
+#include <cstring>
+#include <deque>
+using namespace std;
+int main(){
+    char a;
+    int x;
+    deque<int> d;
+    while(cin >> a && a != '!'){
+        if (a == '*'){
+            if (d.size()){
+                cout << d.front() + d.back() << "\n";
+                d.pop_front();
+                if (d.size()) d.pop_back();
+            }
+            else 
+                cout << "error\n";
+        }
+        else{
+            cin >> x;
+            if (a == '+') d.push_front(x);
+            else  d.push_back(x);
+        }
+    }
+    return 0;
+}
+ 
+ 

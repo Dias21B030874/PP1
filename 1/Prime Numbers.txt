@@ -1,0 +1,41 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+import java.util.Scanner;
+
+public class Main
+{
+    private static boolean isPrime(int n) {
+    if(n < 2)
+        return false;
+
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+	    int n = input.nextInt();
+	    int ans = 0;
+	    int cnt = 0;
+
+        for(int i = 1; i < 1000000 ; i++) {
+            if(isPrime(i)){
+                cnt++;
+                if(cnt == n) {
+                    ans = i;
+                    break;
+                }
+            }
+        }
+        System.out.println(ans);
+    }
+}
+    

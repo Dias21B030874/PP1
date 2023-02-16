@@ -1,0 +1,48 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+   
+  
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+import java.lang.Iterable;
+
+public class Main 
+{
+    private static String check (String s) 
+  {
+        Stack < Character > st1 = new Stack();
+        for (Character i: s.toCharArray()) {
+           if (i != '#')
+                st1.push(i);
+            else if (!st1.empty())
+                st1.pop();
+        }
+        return String.valueOf(st1);
+}
+  
+public static void main (String[]args) 
+  {
+    
+      //boolean flag; 
+        Scanner sc = new Scanner (System.in);
+        String s = sc.next();
+        String t = sc.next();
+    if(check(s).equals(check(t)))
+System.out.println ("Yes");
+    else
+System.out.println ("No");
+      //}
+  }
+
+ 
+}
+
+
+ 
+ 

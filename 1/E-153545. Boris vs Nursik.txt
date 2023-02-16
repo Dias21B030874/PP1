@@ -1,0 +1,48 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+   
+  
+import java.io.*;
+import java.util.*;
+import java.util.Scanner;
+import java.lang.Iterable;
+
+public class Main 
+{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int x, ans = 0;
+        Queue<Integer> b = new LinkedList<>();
+        Queue<Integer> n = new LinkedList<>();
+        //while(true){
+            for(int i = 0; i < 5; i++) { x = input.nextInt(); b.add(x); }
+            for(int j = 0; j < 5; j++) { x = input.nextInt(); n.add(x); }
+
+            while(!b.isEmpty() && !n.isEmpty() && ans < 1000000){
+                ans++;
+                int bb = b.element(), nn = n.element(); b.poll(); n.poll();
+                if ((bb > nn || nn-bb == 9) && nn-bb != -9){
+                    b.add(bb); b.add(nn);
+                }else{
+                    n.add(bb); n.add(nn);
+                }
+            }   
+            if(ans == 1000000)
+                System.out.println("blin nichya");
+            else if(n.isEmpty())
+              
+                System.out.println("Boris " + ans);
+            else
+                System.out.println("Nursik " + ans);
+    //}
+}
+}
+
+
+ 
+ 
